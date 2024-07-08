@@ -1,20 +1,31 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
 
+import {  StyleSheet, Text, View,Platform,SafeAreaView } from 'react-native';
+import PokemonCard from './components/PokemonCards';
 export default function App() {
+
+  const charmanderData = {
+    name:"Charmander",
+    image:require("./assets/charmander.jpg"),
+    type:"fire",
+    hp:39,
+    moves:["scratch","Ember","Growl","Leer"],
+    weaknesses:["Water","Rock"]
+  };
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+
+    <SafeAreaView style={styles.container}>
+        <PokemonCard {...charmanderData} />
+        
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#f5f5f5',
+    paddingTop:Platform.OS=="android" ? 35: 0
+ 
   },
 });
